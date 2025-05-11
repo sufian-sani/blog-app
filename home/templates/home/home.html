@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+{% block title %}Home - Blog{% endblock %}
+
+{% block blog-posts %}
+    <div class="row">
+        <div class="col-lg-8">
+            {% include 'home/partials/feature_post.html' %}
+            {% include 'home/partials/posts.html' %}
+            {% include 'home/partials/pagination.html' %}
+        </div>
+        <div class="col-lg-4">
+            {% include 'home/partials/sidebar.html' %}
+            {% include 'home/partials/category_sidebar.html' %}
+        </div>
+    </div>
+{% endblock %}

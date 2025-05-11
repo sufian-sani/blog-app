@@ -1,0 +1,33 @@
+myblog/
+├── blog/              # Blog app
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   ├── forms.py
+│   └── templates/blog/
+│       ├── post_list.html
+│       └── post_detail.html
+├── users/             # Custom user model and profiles
+├── comments/          # Comments and nested replies
+├── core/              # Site-wide logic, homepage, etc.
+├── static/
+├── media/
+├── templates/
+├── manage.py
+└── settings/
+
+
+🧰 Recommended Tools & Libraries
+django-ckeditor – Rich-text editor
+
+django-allauth – User registration and login
+
+django-taggit – Tagging system
+
+django-mptt – For nested comments
+
+django-debug-toolbar – Debugging
+
+django-extensions – Dev utilities
+
+django-rest-framework – API
