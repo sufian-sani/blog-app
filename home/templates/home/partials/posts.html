@@ -1,47 +1,25 @@
-<!-- Nested row for non-featured blog posts-->
 <div class="row">
-    <div class="col-lg-6">
-        <!-- Blog post-->
-        <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-            <div class="card-body">
-                <div class="small text-muted">January 1, 2023</div>
-                <h2 class="card-title h4">Post Title</h2>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                <a class="btn btn-primary" href="#!">Read more →</a>
+    {% for post in posts %}
+        {% if forloop.counter0|divisibleby:2 %}
+        <div class="col-lg-6">
+        {% endif %}
+
+            <div class="card mb-4">
+                <a href="#!">
+                    <img class="card-img-top" src="{{ post.image.url|default:'https://dummyimage.com/700x350/dee2e6/6c757d.jpg' }}" alt="{{ post.post_title }}" />
+                </a>
+                <div class="card-body">
+                    <div class="small text-muted">{{ post.create_date|date:"F j, Y" }}</div>
+                    <h2 class="card-title h4">{{ post.post_title }}</h2>
+                    <p class="card-text">{{ post.description|truncatewords:20 }}</p>
+                    <a class="btn btn-primary" href="#!">Read more →</a>
+                </div>
             </div>
+
+        {% if forloop.counter0|divisibleby:2 and not forloop.last and forloop.counter != posts|length %}
+        <!-- Do nothing here -->
+        {% elif forloop.counter|divisibleby:2 or forloop.last %}
         </div>
-        <!-- Blog post-->
-        <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-            <div class="card-body">
-                <div class="small text-muted">January 1, 2023</div>
-                <h2 class="card-title h4">Post Title</h2>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                <a class="btn btn-primary" href="#!">Read more →</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6">
-        <!-- Blog post-->
-        <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-            <div class="card-body">
-                <div class="small text-muted">January 1, 2023</div>
-                <h2 class="card-title h4">Post Title</h2>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                <a class="btn btn-primary" href="#!">Read more →</a>
-            </div>
-        </div>
-        <!-- Blog post-->
-        <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-            <div class="card-body">
-                <div class="small text-muted">January 1, 2023</div>
-                <h2 class="card-title h4">Post Title</h2>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-                <a class="btn btn-primary" href="#!">Read more →</a>
-            </div>
-        </div>
-    </div>
+        {% endif %}
+    {% endfor %}
 </div>

@@ -1,9 +1,13 @@
+{% if feature_post %}
 <div class="card mb-4">
-    <a href="#"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+    <a href="#">
+        <img class="card-img-top" src="{{ feature_post.image.url|default:'https://dummyimage.com/850x350/dee2e6/6c757d.jpg' }}" alt="{{ feature_post.post_title }}">
+    </a>
     <div class="card-body">
-        <div class="small text-muted">January 1, 2023</div>
-        <h2 class="card-title">Featured Post Title</h2>
-        <p class="card-text">Short description of the post...</p>
+        <div class="small text-muted">{{ feature_post.create_date|date:"F j, Y" }}</div>
+        <h2 class="card-title">{{ feature_post.post_title }}</h2>
+        <p class="card-text">{{ feature_post.description|truncatewords:30 }}</p>
         <a class="btn btn-primary" href="#">Read more →</a>
     </div>
 </div>
+{% endif %}
